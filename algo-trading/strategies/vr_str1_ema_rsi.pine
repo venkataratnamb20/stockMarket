@@ -1,0 +1,62 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © venkata_ratnamb
+//--------------Script Structure{
+// <license>
+// <version>
+// <indicator/strategy/library_declaration_statement>
+// <import_statements>
+// <constant_declarations>
+// <inputs>
+// <function_declarations>
+// <calculations>
+// <strategy_calls>
+// <plots>
+// <alerts>
+// }
+//@version=5
+strategy("My Strategy", overlay=true, margin_long=100, margin_short=100)
+
+//-----------CONSTANTS{
+RSI_LENGH = 5
+EMA_FAST_LENGTH = 5
+EMA_SLOW_LENGTH = 10
+//}
+
+//------------inputs{
+rsiSourceInput = input.source(close, "RSI Source")
+rsiLengthInput = input.int(RSI_LENGH, "RSI Length")
+emaFastSourceInput = input.source(close, "Fast EMA Source")
+emaFastLengthInput = input.int(EMA_FAST_LENGTH, "Fast EMA Length")
+emaSlowSourceInput = input.source(close, "Slow EMA Source")
+emaSlowLengthInput = input.int(EMA_SLOW_LENGTH, "Slow EMA Length")
+//}
+
+//----------Calculations{
+rsi = ta.rsi(rsiSourceInput,rsiLengthInput) 
+emaFast = ta.ema(emaFastSourceInput, emaFastLengthInput) 
+emaSlow = ta.ema(emaSlowSourceInput, emaSlowLengthInput)
+
+//}
+//----------Buy Conditions{
+rsiEntry1 = rsi <25
+emaEntry1 = ta.crossover(emaFast, emaSlow)
+//}
+//----------Sell/Short Conditions{
+rsiExit1 = ta.crossover(rsi, 70)
+//}
+longCondition = (emaEntry1 and ta.change(rsi)>1) or rsiEntry1
+if (longCondition)
+    strategy.entry("My Long Entry Id", strategy.long)
+
+shortCondition = ta.crossunder(emaFast, emaSlow)
+if (shortCondition)
+    strategy.entry("My Short Entry Id", strategy.short)
+    
+
+plot(emaFast, color=color.blue)
+plot(emaSlow, color=color.red)
+
+// plot(rsi, color=color.blue)
+// hline(50)
+// hline(60)
+// hline(40)

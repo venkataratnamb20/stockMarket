@@ -1,0 +1,97 @@
+// Sample format to place order from algomojo
+{
+    "api_key":"c1997d92a3bb556a67dca7d1446b70",
+    "api_secret":"5306433329e81ba41203653417063c",
+    "data":
+      {
+        "strg_name":"Test Strategy",
+        "s_prdt_ali":"BO:BO||CNC:CNC||CO:CO||MIS:MIS||NRML:NRML",
+        "Tsym":"NIFTY2210617400CE",
+        "exch":"NFO",
+        "Ttranstype":"B",
+        "Ret":"DAY",
+        "prctyp":"MKT",
+        "qty":"1",
+        "discqty":"0",
+        "MktPro":"NA",
+        "Price":"0",
+        "TrigPrice":"0",
+        "Pcode":"NRML",
+        "AMO":"NO"
+      }
+}
+
+// Working syntax for NIFTY- BO does not work
+{
+    "api_key":"81fdc2a7f7f031f1f14e5d5198fe1e97",
+    "api_secret":"2df8ace01d9c2d40e1c6bf1063ad7df2",
+    "data":
+      {
+        "strg_name":"Test Strategy",
+        "s_prdt_ali":"BO:BO||CNC:CNC||CO:CO||MIS:MIS||NRML:NRML",
+        "Tsym":"NIFTY2210617400CE",
+        "exch":"NFO",
+        "Ttranstype":"B",
+        "Ret":"DAY",
+        "prctyp":"MKT",
+        "qty":"50",
+        "discqty":"0",
+        "MktPro":"NA",
+        "Price":"0",
+        "TrigPrice":"0",
+        "Pcode":"BO",
+         "StopLoss": 10,
+         "Target":10,
+         "TrailingStopLoss": 10,
+        "AMO":"NO"
+      }
+}
+
+// Alert syntax
+SuperTrend Algomojo Trading Strategy (10, hl2, 3, Tradingview Strategy, RELIANCE-EQ, NSE, 1, MKT, MIS, 12, 1, 2022, 12, 31, 2022): order {{strategy.order.action}} @ {{strategy.order.contracts}} filled on {{ticker}}. New strategy position is {{strategy.position_size}}
+
+// Working
+{
+    "api_key":"81fdc2a7f7f031f1f14e5d5198fe1e97",
+    "api_secret":"2df8ace01d9c2d40e1c6bf1063ad7df2",
+    "data":
+      {
+        "strg_name":"Test Strategy",
+        "s_prdt_ali":"BO:BO||CNC:CNC||CO:CO||MIS:MIS||NRML:NRML",
+        "Tsym":"NIFTY2210617400CE",
+        "exch":"NFO",
+        "Ttranstype":"B",
+        "Ret":"DAY",
+        "prctyp":"MKT",
+        "qty":"50",
+        "discqty":"0",
+        "MktPro":"NA",
+        "Price":"0",
+        "TrigPrice":"0",
+        "Pcode":"NRML",
+        "AMO":"NO"
+      }
+}
+
+//SBIN  Working
+{
+    "api_key":"81fdc2a7f7f031f1f14e5d5198fe1e97",
+    "api_secret":"2df8ace01d9c2d40e1c6bf1063ad7df2",
+    "data":
+      {
+        "strg_name":"Test Strategy",
+        "s_prdt_ali":"BO:BO||CNC:CNC||CO:CO||MIS:MIS||NRML:NRML",
+        "Tsym":"SBIN-EQ",
+        "exch":"NSE",
+        "Ttranstype":"S",
+        "Ret":"DAY",
+        "prctyp":"MKT",
+        "qty":"1",
+        "discqty":"0",
+        "MktPro":"NA",
+        "Price":"0",
+        "TrigPrice":"0",
+        "Pcode":"MIS",
+        "AMO":"NO"
+      }
+}
